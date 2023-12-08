@@ -1,42 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>API Request Buttons</title>
     <style>
-        /* Style the buttons */
-        .button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+      /* Style the buttons */
+      .button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
 
-        /* Style the buttons when they are hovered over */
-        .button:hover {
-            background-color: #3e8e41;
-        }
+      /* Style the buttons when they are hovered over */
+      .button:hover {
+        background-color: #3e8e41;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Button 1 -->
-    <button class="button" onclick="() => raspPiAPI(0)">PowerOff</button>
-    <button class="button" onclick="() => raspPiAPI(1)">PowerOn</button>
+    <button class="button" id="off">PowerOff</button>
+    <button class="button" id="on">PowerOn</button>
 
     <!-- Script to handle the API requests -->
     <script>
-    const POWER_ON_API_URL = "https://696a-223-29-193-31.ngrok-free.app/power-on";
-    const POWER_OFF_API_URL = "https://696a-223-29-193-31.ngrok-free.app/power-off";
+      const pon = document.getElementById("on");
+      const poff = document.getElementById("off");
 
-    const raspPiAPI = (num) =>
-    fetch(num === 0 ? POWER_OFF_API_URL : POWER_ON_API_URL)
-        .then((d) => {console.log(d.json()); return d.json()})
-        .then(() => alert("Done"))
-        .catch(() => alert("Error"));
+      const POWER_ON_API_URL = "https://696a-223-29-193-31.ngrok-free.app/power-on";
+      const POWER_OFF_API_URL = "https://696a-223-29-193-31.ngrok-free.app/power-off";
 
+      const raspPiAPI = (num) =>
+        fetch(num === 0 ? POWER_OFF_API_URL : POWER_ON_API_URL)
+          .then((response) => response.json())
+          .then(() => alert("Done"))
+          .catch(() => alert("Error"));
+
+      pon.addEventListener("click", () => raspPiAPI(1));
+      poff.addEventListener("click", () => raspPiAPI(0));
     </script>
-</body>
+  </body>
 </html>

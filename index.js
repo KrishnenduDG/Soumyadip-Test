@@ -26,9 +26,9 @@ app.get("/power-on", async (req, res) => {
       }
 
       // Send the combined output as the response
-      res.send(
-        `Listing files:\n${lsOutput}\nOutput of 'echo Hello': ${echoOutput}`
-      );
+      res.json({
+        msg: `Listing files:\n${lsOutput}\nOutput of 'echo Hello': ${echoOutput}`,
+      });
     });
   });
 });
@@ -51,9 +51,9 @@ app.get("/power-off", async (req, res) => {
       }
 
       // Send the combined output as the response
-      res.send(
-        `Listing files:\n${lsOutput}\nOutput of 'echo Hello': ${echoOutput}`
-      );
+      res.json({
+        msg: `Listing files:\n${lsOutput}\nOutput of 'echo Hello': ${echoOutput}`,
+      });
     });
   });
 });

@@ -13,7 +13,7 @@ app.get("/power-on", async (req, res) => {
   exec("cd ..", (error, lsOutput, lsError) => {
     if (error) {
       console.error(`Error executing 'ls': ${error}`);
-      res.status(500).send("Internal Server Error");
+      res.status(500).json({ msg: "Internal Server Error" });
       return;
     }
 
@@ -21,7 +21,8 @@ app.get("/power-on", async (req, res) => {
     exec("sudo python poweron.py", (error, echoOutput, echoError) => {
       if (error) {
         console.error(`Error executing 'echo Hello': ${error}`);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({ msg: "Internal Server Error" });
+
         return;
       }
 
@@ -38,7 +39,9 @@ app.get("/power-off", async (req, res) => {
   exec("cd ..", (error, lsOutput, lsError) => {
     if (error) {
       console.error(`Error executing 'ls': ${error}`);
-      res.status(500).send("Internal Server Error");
+
+      res.status(500).json({ msg: "Internal Server Error" });
+
       return;
     }
 
@@ -46,7 +49,8 @@ app.get("/power-off", async (req, res) => {
     exec("sudo python powerff.py", (error, echoOutput, echoError) => {
       if (error) {
         console.error(`Error executing 'echo Hello': ${error}`);
-        res.status(500).send("Internal Server Error");
+        res.status(500).json({ msg: "Internal Server Error" });
+
         return;
       }
 

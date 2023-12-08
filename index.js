@@ -1,10 +1,11 @@
+import cors from "cors";
 import express from "express";
 import { exec } from "node:child_process";
-const randGen = (high, low) => Math.floor(Math.random() * (high - low) + low);
 
 const app = express();
 const PORT = 8080;
 
+app.use(cors());
 app.get("/", (req, res) => res.json({ a: 1, b: 2 }));
 
 app.get("/power-on", async (req, res) => {

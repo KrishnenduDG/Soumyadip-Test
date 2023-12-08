@@ -32,7 +32,7 @@ app.get("/power-on", async (req, res) => {
   });
 });
 
-app.get("/power-on", async (req, res) => {
+app.get("/power-off", async (req, res) => {
   // Run 'ls' command
   exec("cd ..", (error, lsOutput, lsError) => {
     if (error) {

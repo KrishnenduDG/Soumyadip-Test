@@ -33,7 +33,7 @@
 
     const raspPiAPI = (num) =>
     fetch(num === 0 ? POWER_OFF_API_URL : POWER_ON_API_URL)
-        .then((d) => d.json())
+        .then((d) => {console.log(d.json()); return d.json()})
         .then(() => alert("Done"))
         .catch(() => alert("Error"));
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request Buttons</title>
+    <style>
+        /* Style the buttons */
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Style the buttons when they are hovered over */
+        .button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <!-- Button 1 -->
+    <button class="button" onclick="raspPiAPI()">Make API Request 1</button>
+
+    <!-- Script to handle the API requests -->
+    <script>
+    const API_URL = "";
+
+    const raspPiAPI = () =>
+    fetch(API_URL)
+        .then((d) => d.json())
+        .then(() => alert("Done"))
+        .catch(() => alert("Error"));
+
+    </script>
+</body>
+</html>
